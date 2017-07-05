@@ -19,7 +19,7 @@ public class EntityLib extends JavaPlugin{
 
     @Override
     public void onLoad(){
-        NMSUtil.getHandler(EntityRegister.class).register(EntityType.VILLAGER, "custommob", Creature1_12_R1.class, "CustomMob");
+        NMSUtil.registerCustomEntity();
     }
 
     @Override

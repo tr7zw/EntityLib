@@ -32,6 +32,10 @@ public interface CCreature {
     
     public Entity getBukkitGoalTarget();
     
+    public void addNMSGoalSelector(int prio, Object selector);
+    
+    public void addNMSTargetSelector(int prio, Object selector);
+    
     public void addGoalRandomLookaround(int prio);
     
     public void addGoalRandomStroll(int prio, double speed);
