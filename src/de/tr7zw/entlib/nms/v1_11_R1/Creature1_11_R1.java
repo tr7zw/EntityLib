@@ -1,11 +1,13 @@
-package de.tr7zw.entlib.nms.v1_12_R1;
+package de.tr7zw.entlib.nms.v1_11_R1;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_11_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_11_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftCreature;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -15,43 +17,41 @@ import de.tr7zw.entlib.CustomEntity;
 import de.tr7zw.entlib.EntityLib;
 import de.tr7zw.entlib.NMSUtil;
 import de.tr7zw.entlib.nms.inter.CCreature;
-import de.tr7zw.entlib.nms.inter.CreatureInternal;
 import de.tr7zw.entlib.nms.inter.Navigation;
 import de.tr7zw.entlib.nms.inter.PathfinderGoal;
-import de.tr7zw.itemnbtapi.NBTContainer;
-import net.minecraft.server.v1_12_R1.EntityMonster;
-import net.minecraft.server.v1_12_R1.IMonster;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import net.minecraft.server.v1_12_R1.PathfinderGoalAvoidTarget;
-import net.minecraft.server.v1_12_R1.PathfinderGoalBreakDoor;
-import net.minecraft.server.v1_12_R1.PathfinderGoalEatTile;
-import net.minecraft.server.v1_12_R1.PathfinderGoalFleeSun;
-import net.minecraft.server.v1_12_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_12_R1.PathfinderGoalMeleeAttack;
-import net.minecraft.server.v1_12_R1.PathfinderGoalMoveIndoors;
-import net.minecraft.server.v1_12_R1.PathfinderGoalMoveThroughVillage;
-import net.minecraft.server.v1_12_R1.PathfinderGoalMoveTowardsRestriction;
-import net.minecraft.server.v1_12_R1.PathfinderGoalOpenDoor;
-import net.minecraft.server.v1_12_R1.PathfinderGoalPanic;
-import net.minecraft.server.v1_12_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_12_R1.PathfinderGoalRandomStrollLand;
-import net.minecraft.server.v1_12_R1.PathfinderGoalRestrictOpenDoor;
-import net.minecraft.server.v1_12_R1.PathfinderGoalRestrictSun;
-import net.minecraft.server.v1_12_R1.World;
+import net.minecraft.server.v1_11_R1.EntityCreature;
+import net.minecraft.server.v1_11_R1.IMonster;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.PathfinderGoalAvoidTarget;
+import net.minecraft.server.v1_11_R1.PathfinderGoalBreakDoor;
+import net.minecraft.server.v1_11_R1.PathfinderGoalEatTile;
+import net.minecraft.server.v1_11_R1.PathfinderGoalFleeSun;
+import net.minecraft.server.v1_11_R1.PathfinderGoalFloat;
+import net.minecraft.server.v1_11_R1.PathfinderGoalMeleeAttack;
+import net.minecraft.server.v1_11_R1.PathfinderGoalMoveIndoors;
+import net.minecraft.server.v1_11_R1.PathfinderGoalMoveThroughVillage;
+import net.minecraft.server.v1_11_R1.PathfinderGoalMoveTowardsRestriction;
+import net.minecraft.server.v1_11_R1.PathfinderGoalOpenDoor;
+import net.minecraft.server.v1_11_R1.PathfinderGoalPanic;
+import net.minecraft.server.v1_11_R1.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_11_R1.PathfinderGoalRandomStrollLand;
+import net.minecraft.server.v1_11_R1.PathfinderGoalRestrictOpenDoor;
+import net.minecraft.server.v1_11_R1.PathfinderGoalRestrictSun;
+import net.minecraft.server.v1_11_R1.World;
 
-public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonster, CreatureInternal{
+public class Creature1_11_R1 extends EntityCreature implements CCreature, IMonster{
 
     private CustomEntity wrap;
 
     @SuppressWarnings("deprecation")
-    public Creature1_12_R1(org.bukkit.World world, CustomEntity wrap) {
+    public Creature1_11_R1(org.bukkit.World world, CustomEntity wrap) {
         this(((CraftWorld)world).getHandle());
         this.wrap = wrap;
         EntityLib.mapping.put(world.getName() + "_" + this.getId(), (int) wrap.getMobType().getTypeId());
     }
 
     @SuppressWarnings("deprecation")
-    public Creature1_12_R1(World world) {
+    public Creature1_11_R1(World world) {
         super(world);
         EntityLib.mapping.put(world.getWorld().getName() + "_" + this.getId(), (int) EntityType.WITCH.getTypeId());
     }
@@ -88,12 +88,12 @@ public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonste
 
     @Override
     public void addGoalSelector(int priority, PathfinderGoal goal) {
-        goalSelector.a(priority, (net.minecraft.server.v1_12_R1.PathfinderGoal) NMSUtil.getPathfinder(goal));
+        goalSelector.a(priority, (net.minecraft.server.v1_11_R1.PathfinderGoal) NMSUtil.getPathfinder(goal));
     }
 
     @Override
     public void addTargetSelector(int priority, PathfinderGoal goal) {
-        targetSelector.a(priority, (net.minecraft.server.v1_12_R1.PathfinderGoal) NMSUtil.getPathfinder(goal));
+        targetSelector.a(priority, (net.minecraft.server.v1_11_R1.PathfinderGoal) NMSUtil.getPathfinder(goal));
     }
 
     @Override
@@ -134,8 +134,8 @@ public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonste
 
     @Override
     public void addNMSGoalSelector(int prio, Object selector) {
-        if(selector != null && selector instanceof net.minecraft.server.v1_12_R1.PathfinderGoal){
-            goalSelector.a(prio, (net.minecraft.server.v1_12_R1.PathfinderGoal) selector);
+        if(selector != null && selector instanceof net.minecraft.server.v1_11_R1.PathfinderGoal){
+            goalSelector.a(prio, (net.minecraft.server.v1_11_R1.PathfinderGoal) selector);
         }else{
             new ClassCastException("The NMS Pathfinder Goal was null or of a wrong class/nms version!").printStackTrace();
         }
@@ -143,18 +143,46 @@ public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonste
 
     @Override
     public void addNMSTargetSelector(int prio, Object selector) {
-        if(selector != null && selector instanceof net.minecraft.server.v1_12_R1.PathfinderGoal){
-            targetSelector.a(prio, (net.minecraft.server.v1_12_R1.PathfinderGoal) selector);
+        if(selector != null && selector instanceof net.minecraft.server.v1_11_R1.PathfinderGoal){
+            targetSelector.a(prio, (net.minecraft.server.v1_11_R1.PathfinderGoal) selector);
         }else{
             new ClassCastException("The NMS Pathfinder Goal was null or of a wrong class/nms version!").printStackTrace();
         }
     }
 
+    @SuppressWarnings({ "deprecation", "unchecked" })
     @Override
     public void a(NBTTagCompound nbttagcompound) {
         // NBTSaving
         super.a(nbttagcompound);
-        loadEntity(world.getWorld(), new NBTContainer(nbttagcompound.toString()));
+        System.out.println("Loading");
+        String s = nbttagcompound.getString("wrapper");
+        try {
+            if(s != null){
+                Class<? extends CustomEntity> wc = (Class<? extends CustomEntity>) Class.forName(s);
+                if(wc != null){
+                    Constructor<? extends CustomEntity> c = null;
+                    try{
+                        c = wc.getConstructor(org.bukkit.World.class, CCreature.class);
+                    }catch(Exception ex){}
+                    if(c != null){
+                        wrap = c.newInstance(world.getWorld(), this);
+                        EntityLib.mapping.put(world.getWorld().getName() + "_" + this.getId(), (int) wrap.getMobType().getTypeId());
+                    }else{
+                        System.out.println("Tried loading an unknown custom entity of type '" + s + "', but the Class has no (World, CCreature) constructor! Removing.");
+                    }
+                }else{
+                    System.out.println("Tried loading an unknown custom entity of type '" + s + "'! Removing.");
+                }
+            }else{
+                System.out.println("Tried loading an unknown custom entity! Removing.");
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
+            e.printStackTrace();
+        }
+        if(wrap == null){
+            die();
+        }
     }
 
     @Override
@@ -238,12 +266,7 @@ public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonste
 
     @Override
     public Navigation getNavigator() {
-        return new Navigation1_12_R1(getNavigation());
-    }
-
-    @Override
-    public void setWrapper(CustomEntity wrap) {
-        this.wrap = wrap;
+        return new Navigation1_11_R1(getNavigation());
     }
 
 }

@@ -1,5 +1,5 @@
 main: de.tr7zw.entlib.EntityLib
 name: EntityLib
-version: 1.0
+version: 0.0.1
 author: tr7zw
-depend: [ProtocolLib]
+depend: [ProtocolLib, ItemNBTAPI]

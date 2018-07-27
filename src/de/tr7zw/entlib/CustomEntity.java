@@ -21,6 +21,12 @@ public class CustomEntity {
         handler = NMSUtil.getnewCreature(world, this);
         creature = handler.getCreature();
     }
+    
+    public CustomEntity(World world, EntityType mobtype, CCreature creature){
+        this.mobtype = mobtype;
+        handler = creature;
+        this.creature = handler.getCreature();
+    }
 
     public EntityType getMobType(){
         return mobtype;

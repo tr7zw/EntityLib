@@ -10,12 +10,16 @@ import de.tr7zw.entlib.nms.inter.CCreature;
 import de.tr7zw.entlib.nms.inter.EntityRegister;
 import de.tr7zw.entlib.nms.inter.PathfinderGoal;
 import de.tr7zw.entlib.nms.inter.PathfinderWrapper;
+import de.tr7zw.entlib.nms.v1_11_R1.Creature1_11_R1;
+import de.tr7zw.entlib.nms.v1_11_R1.EntityRegister1_11_R1;
+import de.tr7zw.entlib.nms.v1_11_R1.Pathfinder1_11_R1;
 import de.tr7zw.entlib.nms.v1_12_R1.Creature1_12_R1;
 import de.tr7zw.entlib.nms.v1_12_R1.EntityRegister1_12_R1;
 import de.tr7zw.entlib.nms.v1_12_R1.Pathfinder1_12_R1;
 import de.tr7zw.entlib.nms.v1_8_3.Creature1_8_R3;
 import de.tr7zw.entlib.nms.v1_8_3.EntityRegister1_8_R3;
 import de.tr7zw.entlib.nms.v1_8_3.Pathfinder1_8_R3;
+import de.tr7zw.itemnbtapi.utils.MinecraftVersion;
 
 public class NMSUtil {
 
@@ -29,6 +33,12 @@ public class NMSUtil {
             registerClass(MinecraftVersion.MC1_8_R3, EntityRegister.class, EntityRegister1_8_R3.class);
         }
         //1.11.2
+        if(MinecraftVersion.getVersion() == MinecraftVersion.MC1_11_R1){
+            registerClass(MinecraftVersion.MC1_11_R1, CCreature.class, Creature1_11_R1.class);
+            registerClass(MinecraftVersion.MC1_11_R1, PathfinderWrapper.class, Pathfinder1_11_R1.class);
+            registerClass(MinecraftVersion.MC1_11_R1, EntityRegister.class, EntityRegister1_11_R1.class);
+        }
+        //1.12.2
         if(MinecraftVersion.getVersion() == MinecraftVersion.MC1_12_R1){
             registerClass(MinecraftVersion.MC1_12_R1, CCreature.class, Creature1_12_R1.class);
             registerClass(MinecraftVersion.MC1_12_R1, PathfinderWrapper.class, Pathfinder1_12_R1.class);
@@ -39,6 +49,9 @@ public class NMSUtil {
     protected static void registerCustomEntity(){
         if(MinecraftVersion.getVersion() == MinecraftVersion.MC1_8_R3){
             NMSUtil.getHandler(EntityRegister.class).register(EntityType.VILLAGER, "custommob", Creature1_8_R3.class, "CustomMob");
+        }
+        if(MinecraftVersion.getVersion() == MinecraftVersion.MC1_11_R1){
+            NMSUtil.getHandler(EntityRegister.class).register(EntityType.VILLAGER, "custommob", Creature1_11_R1.class, "CustomMob");
         }
         if(MinecraftVersion.getVersion() == MinecraftVersion.MC1_12_R1){
             NMSUtil.getHandler(EntityRegister.class).register(EntityType.VILLAGER, "custommob", Creature1_12_R1.class, "CustomMob");

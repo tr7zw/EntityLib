@@ -15,14 +15,31 @@ import de.tr7zw.entlib.CustomEntity;
 import de.tr7zw.entlib.EntityLib;
 import de.tr7zw.entlib.NMSUtil;
 import de.tr7zw.entlib.nms.inter.CCreature;
+import de.tr7zw.entlib.nms.inter.CreatureInternal;
+import de.tr7zw.entlib.nms.inter.Navigation;
 import de.tr7zw.entlib.nms.inter.PathfinderGoal;
+import de.tr7zw.itemnbtapi.NBTContainer;
 import net.minecraft.server.v1_8_R3.EntityCreature;
-import net.minecraft.server.v1_8_R3.IMonster;
+import net.minecraft.server.v1_8_R3.IAnimal;
+import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import net.minecraft.server.v1_8_R3.PathfinderGoalAvoidTarget;
+import net.minecraft.server.v1_8_R3.PathfinderGoalBreakDoor;
+import net.minecraft.server.v1_8_R3.PathfinderGoalEatTile;
+import net.minecraft.server.v1_8_R3.PathfinderGoalFleeSun;
+import net.minecraft.server.v1_8_R3.PathfinderGoalFloat;
+import net.minecraft.server.v1_8_R3.PathfinderGoalMeleeAttack;
+import net.minecraft.server.v1_8_R3.PathfinderGoalMoveIndoors;
+import net.minecraft.server.v1_8_R3.PathfinderGoalMoveThroughVillage;
+import net.minecraft.server.v1_8_R3.PathfinderGoalMoveTowardsRestriction;
+import net.minecraft.server.v1_8_R3.PathfinderGoalOpenDoor;
+import net.minecraft.server.v1_8_R3.PathfinderGoalPanic;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRestrictOpenDoor;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRestrictSun;
 import net.minecraft.server.v1_8_R3.World;
 
-public class Creature1_8_R3 extends EntityCreature implements CCreature, IMonster{
+public class Creature1_8_R3 extends EntityCreature implements CCreature, IAnimal, CreatureInternal{
 
     private CustomEntity wrap;
 
@@ -50,8 +67,8 @@ public class Creature1_8_R3 extends EntityCreature implements CCreature, IMonste
     }
 
     @Override
-    public void setLocation(double x, double y, double z, float pitch, float yaw) {
-        super.setLocation(x, y, z, pitch, yaw);
+    public void setLocation(double x, double y, double z, float yaw, float pitch) {
+        super.setLocation(x, y, z, yaw, pitch);
     }
 
     @Override
@@ -94,7 +111,7 @@ public class Creature1_8_R3 extends EntityCreature implements CCreature, IMonste
     public boolean inWater() {
         return super.inWater;
     }
-    
+
     @Override
     public Random getRandom(){
         return random;
@@ -114,7 +131,7 @@ public class Creature1_8_R3 extends EntityCreature implements CCreature, IMonste
     public void setsize(float with, float hight) {
         super.setSize(width, hight);
     }
-    
+
     @Override
     public void addNMSGoalSelector(int prio, Object selector) {
         if(selector != null && selector instanceof net.minecraft.server.v1_8_R3.PathfinderGoal){
@@ -131,6 +148,100 @@ public class Creature1_8_R3 extends EntityCreature implements CCreature, IMonste
         }else{
             new ClassCastException("The NMS Pathfinder Goal was null or of a wrong class/nms version!").printStackTrace();
         }
+    }
+
+    @Override
+    public void a(NBTTagCompound nbttagcompound) {
+        super.a(nbttagcompound);
+        loadEntity(world.getWorld(), new NBTContainer(nbttagcompound.toString()));
+    }
+
+    @Override
+    public void b(NBTTagCompound nbttagcompound) {
+        super.b(nbttagcompound);
+        System.out.println("Saving");
+        nbttagcompound.setString("wrapper", wrap.getClass().getName());
+    }
+
+    @Override
+    public void setPersistent(boolean persistent) {
+        super.persistent = (persistent);
+    }
+
+    @Override
+    public void addGoalMoveThroughVillage(int prio, double speed) {
+        goalSelector.a(prio, new PathfinderGoalMoveThroughVillage(this, speed, true));
+    }
+
+    @Override
+    public void addGoalMeleeAttack(int prio, double dmg) {
+        goalSelector.a(prio, new PathfinderGoalMeleeAttack(this, dmg, true));
+    }
+
+    @Override
+    public void addGoalMoveIndoors(int prio) {
+        goalSelector.a(prio, new PathfinderGoalMoveIndoors(this));
+    }
+
+    @Override
+    public void addGoalPanic(int prio, double speed) {
+        goalSelector.a(prio, new PathfinderGoalPanic(this, speed));
+    }
+
+    @Override
+    public void addGoalRestrictSun(int prio) {
+        goalSelector.a(prio, new PathfinderGoalRestrictSun(this));
+    }
+
+    @Override
+    public void addGoalRestrictOpenDoor(int prio) {
+        goalSelector.a(prio, new PathfinderGoalRestrictOpenDoor(this));
+    }
+
+    @Override
+    public void addGoalFleeSun(int prio, double speed) {
+        goalSelector.a(prio, new PathfinderGoalFleeSun(this, speed));
+    }
+
+    @Override
+    public void addGoalBreakDoor(int prio) {
+        goalSelector.a(prio, new PathfinderGoalBreakDoor(this));
+    }
+
+    @Override
+    public void addGoalEatTile(int prio) {
+        goalSelector.a(prio, new PathfinderGoalEatTile(this));
+    }
+
+    @Override
+    public void addGoalFloat(int prio) {
+        goalSelector.a(prio, new PathfinderGoalFloat(this));
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void addGoalAvoidTarget(int prio, EntityType type, float dist, double speed) {
+        goalSelector.a(prio, new PathfinderGoalAvoidTarget(this, type.getEntityClass(), dist, speed, speed));
+    }
+
+    @Override
+    public void addGoalOpenDoor(int prio) {
+        goalSelector.a(prio, new PathfinderGoalOpenDoor(this, true));
+    }
+
+    @Override
+    public void addGoalMoveTowardsRestriction(int prio, double speed) {
+        goalSelector.a(prio, new PathfinderGoalMoveTowardsRestriction(this, speed));
+    }
+
+    @Override
+    public Navigation getNavigator() {
+        return new Navigation1_8_R3(getNavigation());
+    }
+
+    @Override
+    public void setWrapper(CustomEntity wrap) {
+        this.wrap = wrap;
     }
 
 }
