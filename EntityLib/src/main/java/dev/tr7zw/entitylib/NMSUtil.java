@@ -11,9 +11,9 @@ import dev.tr7zw.entitylib.api.CCreature;
 import dev.tr7zw.entitylib.api.EntityRegister;
 import dev.tr7zw.entitylib.api.PathfinderGoal;
 import dev.tr7zw.entitylib.api.PathfinderWrapper;
-import dev.tr7zw.entitylib.nms.v1_16_R3.Creature1_12_R1;
-import dev.tr7zw.entitylib.nms.v1_16_R3.EntityRegister1_12_R1;
-import dev.tr7zw.entitylib.nms.v1_16_R3.Pathfinder1_12_R1;
+import dev.tr7zw.entitylib.nms.v16r3.Creature1_12_R1;
+import dev.tr7zw.entitylib.nms.v16r3.EntityRegister1_12_R1;
+import dev.tr7zw.entitylib.nms.v16r3.Pathfinder1_12_R1;
 
 public class NMSUtil {
 

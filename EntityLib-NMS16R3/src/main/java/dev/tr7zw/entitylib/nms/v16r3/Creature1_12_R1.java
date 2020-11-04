@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.nms.v1_16_R3;
+package dev.tr7zw.entitylib.nms.v16r3;
 
 import java.util.Random;
 
