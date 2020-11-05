@@ -2,11 +2,15 @@ package dev.tr7zw.entitylib;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class EntityLib extends JavaPlugin{
+import dev.tr7zw.entitylib.api.EntityLib;
+import dev.tr7zw.entitylib.test.InteractListener;
 
-    public static EntityLib instance;
+public class EntityLibPlugin extends JavaPlugin{
+
+    public static EntityLibPlugin instance;
 
     public static final HashMap<String, Integer> mapping = new HashMap<>();
 
@@ -18,6 +22,8 @@ public class EntityLib extends JavaPlugin{
     @Override
     public void onEnable(){
         instance = this;
+        EntityLib.setEntityWrapper(new dev.tr7zw.entitylib.nms.v16r3.NMSEntityWrapper());
+        Bukkit.getPluginManager().registerEvents(new InteractListener(), this);
         //Bukkit.getPluginManager().registerEvents(new EnitityListener(), this);
         //Bukkit.getPluginManager().registerEvents(new TestListener(), this);
     }

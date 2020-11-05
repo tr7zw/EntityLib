@@ -1,5 +1,5 @@
-main: de.tr7zw.entlib.EntityLib
+main: dev.tr7zw.entitylib.EntityLibPlugin
 name: EntityLib
 version: 0.0.1
 author: tr7zw
-depend: [ProtocolLib, ItemNBTAPI]
+depend: [NBTAPI]
