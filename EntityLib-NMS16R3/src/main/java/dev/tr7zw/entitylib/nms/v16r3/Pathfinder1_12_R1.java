@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.nms.v16r3;
+/*package dev.tr7zw.entitylib.nms.v16r3;
 
 import dev.tr7zw.entitylib.api.PathfinderWrapper;
 import net.minecraft.server.v1_12_R1.PathfinderGoal;
@@ -38,3 +38,4 @@ public class Pathfinder1_12_R1 extends PathfinderGoal implements PathfinderWrapp
     
 
 }
+*/

@@ -35,12 +35,12 @@ public interface NMSEntity extends CustomEntity{
 		return getNMSEntity().pitch;
 	}
 	
-	public default BoundingBox getBoundingBox() {
+	public default BoundingBox getEntityBoundingBox() {
 		AxisAlignedBB box = getNMSEntity().getBoundingBox();
 		return new BoundingBox(box.maxX, box.maxY, box.maxZ, box.minX, box.minY, box.minZ);
 	}
 	
-	public default void setBoundingBox(BoundingBox boundingBox) {
+	public default void setEntityBoundingBox(BoundingBox boundingBox) {
 		getNMSEntity().a(new AxisAlignedBB(boundingBox.getMinX(), boundingBox.getMinY(), boundingBox.getMinZ(), boundingBox.getMaxX(), boundingBox.getMaxY(), boundingBox.getMaxZ()));
 	}
 	

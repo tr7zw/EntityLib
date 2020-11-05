@@ -1,19 +1,14 @@
-package dev.tr7zw.entitylib;
+/*package dev.tr7zw.entitylib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 import org.bukkit.World;
-import org.bukkit.entity.EntityType;
 
-import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
+import de.tr7zw.nbtapi.utils.MinecraftVersion;
 import dev.tr7zw.entitylib.api.CCreature;
-import dev.tr7zw.entitylib.api.EntityRegister;
 import dev.tr7zw.entitylib.api.PathfinderGoal;
 import dev.tr7zw.entitylib.api.PathfinderWrapper;
-import dev.tr7zw.entitylib.nms.v16r3.Creature1_12_R1;
-import dev.tr7zw.entitylib.nms.v16r3.EntityRegister1_12_R1;
-import dev.tr7zw.entitylib.nms.v16r3.Pathfinder1_12_R1;
 
 public class NMSUtil {
 
@@ -78,3 +73,4 @@ public class NMSUtil {
     }
 
 }
+*/

@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.nms.v16r3;
+/*package dev.tr7zw.entitylib.nms.v16r3;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,3 +29,4 @@ public class EntityRegister1_12_R1 extends EntityRegister{
     }
     
 }
+*/

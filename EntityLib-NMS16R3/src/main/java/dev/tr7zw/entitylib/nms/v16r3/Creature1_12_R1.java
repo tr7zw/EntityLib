@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.nms.v16r3;
+/*package dev.tr7zw.entitylib.nms.v16r3;
 
 import java.util.Random;
 
@@ -243,4 +243,4 @@ public class Creature1_12_R1 extends EntityMonster implements CCreature, IMonste
         this.wrap = wrap;
     }
 
-}
+}*/

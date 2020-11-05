@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.test;
+/*package dev.tr7zw.entitylib.test;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -32,3 +32,4 @@ public class TestListener implements Listener{
     }
     
 }
+*/

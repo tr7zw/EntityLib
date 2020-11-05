@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib;
+/*package dev.tr7zw.entitylib;
 
 import java.util.Random;
 
@@ -183,5 +183,5 @@ public class CustomEntity {
         List targetC = (List) ReflectionUtils.getPrivateField("c", PathfinderGoalSelector.class, this.targetSelector);
         targetC.clear();
     }
-     */
-}
+     
+}*/

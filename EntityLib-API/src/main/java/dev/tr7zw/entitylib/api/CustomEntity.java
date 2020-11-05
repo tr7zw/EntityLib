@@ -55,6 +55,14 @@ public interface CustomEntity {
 	 * 
 	 * @return
 	 */
-	public BoundingBox getBoundingBox();
+	public BoundingBox getEntityBoundingBox();
+	
+	
+	/**
+	 * Replace the entities BoundingBox
+	 * 
+	 * @param boundingBox
+	 */
+	public void setEntityBoundingBox(BoundingBox boundingBox);
 	
 }

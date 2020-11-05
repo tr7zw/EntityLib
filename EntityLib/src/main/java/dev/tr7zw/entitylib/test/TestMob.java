@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.test;
+/*package dev.tr7zw.entitylib.test;
 
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
@@ -38,3 +38,4 @@ public class TestMob extends CustomEntity{
     }
 
 }
+*/

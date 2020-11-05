@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib;
+/*package dev.tr7zw.entitylib;
 
 import org.bukkit.event.Listener;
 
@@ -31,3 +31,4 @@ public class EnitityListener implements Listener{
     }
     
 }
+*/

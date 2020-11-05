@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.test;
+/*package dev.tr7zw.entitylib.test;
 
 import dev.tr7zw.entitylib.CustomEntity;
 import dev.tr7zw.entitylib.api.PathfinderGoal;
@@ -25,3 +25,4 @@ public class PathfinderGoalFloat extends PathfinderGoal{
 
 
 }
+*/

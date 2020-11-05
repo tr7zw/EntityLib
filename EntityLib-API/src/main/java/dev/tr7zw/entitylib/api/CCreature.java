@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.api;
+/*package dev.tr7zw.entitylib.api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -80,7 +80,7 @@ public interface CCreature {
         new PathfinderGoalTargetNearestPlayer(entityinsentient)
      */
     
-    public void addGoalRandomStroll(int prio, double speed);
+  /*  public void addGoalRandomStroll(int prio, double speed);
     
     public void setsize(float with, float hight);
     
@@ -94,4 +94,4 @@ public interface CCreature {
     //ETC
     public Random getRandom();
     
-}
+}*/

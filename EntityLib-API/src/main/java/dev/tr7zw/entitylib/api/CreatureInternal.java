@@ -1,4 +1,4 @@
-package dev.tr7zw.entitylib.api;
+/*package dev.tr7zw.entitylib.api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -51,3 +51,4 @@ public interface CreatureInternal {
     }
     
 }
+*/

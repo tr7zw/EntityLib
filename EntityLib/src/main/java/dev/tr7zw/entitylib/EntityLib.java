@@ -2,11 +2,7 @@ package dev.tr7zw.entitylib;
 
 import java.util.HashMap;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import dev.tr7zw.entitylib.test.TestListener;
 
 public class EntityLib extends JavaPlugin{
 
@@ -16,19 +12,19 @@ public class EntityLib extends JavaPlugin{
 
     @Override
     public void onLoad(){
-        NMSUtil.registerCustomEntity();
+        //NMSUtil.registerCustomEntity();
     }
 
     @Override
     public void onEnable(){
         instance = this;
-        Bukkit.getPluginManager().registerEvents(new EnitityListener(), this);
-        Bukkit.getPluginManager().registerEvents(new TestListener(), this);
+        //Bukkit.getPluginManager().registerEvents(new EnitityListener(), this);
+        //Bukkit.getPluginManager().registerEvents(new TestListener(), this);
     }
 
-    public static void spawn(CustomEntity entity, Location location) {
-        entity.getHandler().setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+    /*public static void spawn(CustomEntity entity, Location location) {
+       entity.getHandler().setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
         entity.getHandler().addtoWorld(location.getWorld());
-    }
+    }*/
 
 }
